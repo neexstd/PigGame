@@ -9,7 +9,6 @@ body {
 }
 
 .game__player {
-  /* height: calc(100vh - 20px); */
   display: flex;
   justify-content: center;
   align-items: center;
