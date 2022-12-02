@@ -1,3 +1,5 @@
+// все все переменные глобал скоупа
+
 const btnNewGame = document.querySelector(".btn-newgame");
 const btnThrow = document.querySelector(".btn-dish");
 const btnSwap = document.querySelector(".btn-stay");
@@ -11,11 +13,14 @@ const secondOverallPoints = document.querySelector(".scorepoints-second");
 const closeModal = document.querySelector(".close-modal-window");
 const showModal = document.querySelectorAll(".hidden-window");
 const gameOver = document.querySelector(".gameover");
-let randomNum = Math.ceil(Math.random() * 6);
+let randomNum;
+setTheRandomNum();
 let scorepointsFirst = 0;
 let scorepointsSecond = 0;
 let numOfFOP = 0;
 let numOfSOP = 0;
+
+// удаляем классы, чтобы они не картинки не накладывались друг на друга и все корректно отображалось
 
 function setClassesToRemoveDice() {
   for (let i = 0; i < dice.length; i++) {
@@ -29,6 +34,8 @@ function setClassesToRemoveDice() {
   }
 }
 
+// показываем изображение кубика согласно рандомному числу
+
 function addClassToUnhideDice() {
   for (let i = 0; i < dice.length; i++) {
     if (dice[i].classList.contains(String(randomNum))) {
@@ -38,15 +45,22 @@ function addClassToUnhideDice() {
   }
 }
 
+// создаем рандомное число
+
 function setTheRandomNum() {
   randomNum = Math.ceil(Math.random() * 6);
 }
 
+// функционал смены игрока
+
 function swapPlayers() {
   for (let i = 0; i < players.length; i++) {
     players[i].classList.toggle("actual");
+    players[i].classList.toggle("inactive");
   }
 }
+
+// устанавливаем 0 очков в табле с очками
 
 function setZeroPoints() {
   for (let i = 0; i < players.length; i++) {
@@ -56,6 +70,8 @@ function setZeroPoints() {
     scorepointsSecond = 0;
   }
 }
+
+// начисляем очки
 
 function pointsEarn() {
   for (let i = 0; i < players.length; i++) {
@@ -75,6 +91,8 @@ function pointsEarn() {
   }
 }
 
+// добавляем очки из табла в "оверол"
+
 function sumThePoints() {
   for (let i = 0; i < players.length; i++) {
     if (
@@ -93,6 +111,8 @@ function sumThePoints() {
   }
 }
 
+// проверка на выигрыш
+
 function check() {
   if (Number(firstOverallPoints.textContent) >= 100) {
     gameOver.textContent = "Первый игрок победил!";
@@ -103,15 +123,21 @@ function check() {
   }
 }
 
+// новая игра
+
 function newGame() {
   location.reload();
 }
+
+// показываем модальное окно
 
 function showModalWindow() {
   for (let i = 0; i < showModal.length; i++) {
     showModal[i].classList.remove("hidden-window");
   }
 }
+
+// навешиваем ивентхендлер на нашу кнопку кинуть кубик и добавляем все нужные функции, описанные выше
 
 btnThrow.addEventListener("click", () => {
   switch (randomNum) {
@@ -130,6 +156,8 @@ btnThrow.addEventListener("click", () => {
   }
 });
 
+// навешиваем ивентхендлер на нашу кнопку оставить очки и добавляем все нужные функции, описанные выше
+
 btnSwap.addEventListener("click", () => {
   sumThePoints();
   check();
@@ -138,16 +166,14 @@ btnSwap.addEventListener("click", () => {
   setTheRandomNum();
 });
 
+// навешиваем ивентхендлер на нашу кнопку новая игра и добавляем все нужные функции, описанные выше
+
 btnNewGame.addEventListener("click", () => {
   newGame();
 });
 
+// просто вторая кнопка в модалке
+
 secondBtnNewGame.addEventListener("click", () => {
   newGame();
 });
-
-// closeModal.addEventListener("click", () => {
-//   for (let i = 0; i < showModal.length; i++) {
-//     showModal[i].classList.add("hidden-window");
-//   }
-// });

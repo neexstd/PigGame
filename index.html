@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pig game test</title>
+    <title>Pig game</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,18 +17,18 @@
     <div class="game">
       <div class="game__player">
         <div class="game__player-item actual first">
-          <h2>ИГРОК 1</h2>
+          <h2 class="game__player-header">ИГРОК 1</h2>
           <p class="scorepoints scorepoints-first">0</p>
           <div class="current-scorepoints">
-            <p class="para">Текущие очки</p>
+            <p class="current-scorepoints__text">Текущие очки</p>
             <p class="scoreboard scoreboard-first">0</p>
           </div>
         </div>
-        <div class="game__player-item game__player__second second">
-          <h2>ИГРОК 2</h2>
+        <div class="game__player-item inactive second">
+          <h2 class="game__player-header">ИГРОК 2</h2>
           <p class="scorepoints scorepoints-second">0</p>
           <div class="current-scorepoints">
-            <p class="para">Текущие очки</p>
+            <p class="current-scorepoints__text">Текущие очки</p>
             <p class="scoreboard scoreboard-second">0</p>
           </div>
         </div>
@@ -36,9 +36,6 @@
         <button class="btn btn-dish">БРОСИТЬ КУБИК</button>
         <button class="btn btn-stay">ОСТАВИТЬ</button>
       </div>
-      <!-- <button class="btn btn-newgame">НОВАЯ ИГРА</button>
-      <button class="btn btn-dish">БРОСИТЬ КУБИК</button>
-      <button class="btn btn-stay">ОСТАВИТЬ</button> -->
       <img src="img/1.svg" alt="" class="dice 1 hidden" />
       <img src="img/2.png" alt="" class="dice 2 hidden" />
       <img src="img/3.png" alt="" class="dice 3 hidden" />
@@ -47,9 +44,8 @@
       <img src="img/6.svg" alt="" class="dice 6 hidden" />
     </div>
     <div class="modal-window hidden-window">
-      <!-- <button class="close-modal-window">&times;</button> -->
-      <h1 class="piggy">🐷</h1>
-      <h2 class="gameover">Игра окончилась!</h2>
+      <h1 class="piggy">Игра окончилась 🐷</h1>
+      <h2 class="gameover"></h2>
       <button class="btn btn-orange newgamebtn">Играть заново</button>
     </div>
     <div class="overlay hidden-window"></div>

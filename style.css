@@ -8,11 +8,24 @@ body {
   );
 }
 
+p {
+  margin: 0;
+}
+
+h2 {
+  margin: 40px 0 10px 0;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* Game styling */
+
 .game__player {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  box-shadow: 1px 1px 100px rgba(0, 0, 0, 0.5);
 }
 
 .game {
@@ -23,20 +36,30 @@ body {
 }
 
 .game__player-item {
-  background-color: rgba(255, 255, 255, 0.3);
-  width: 250px;
-  height: 300px;
+  width: 25rem;
+  height: 30rem;
   text-align: center;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
 }
 
+.game__player-header {
+  font-size: 1.5rem;
+}
+
+/* Styles for active player */
+
 .actual {
+  animation: showBlock 0.75s linear forwards;
   background-color: rgba(255, 255, 255, 0.65);
 }
 
-.game__player__second {
-  /* background-color: rgba(255, 255, 255, 0.3); */
+.inactive {
+  animation: reverseShowBlock 0.75s linear forwards;
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.game__player-item:nth-child(2) {
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
   border-top-right-radius: 5px;
@@ -45,56 +68,49 @@ body {
 
 .current-scorepoints {
   text-transform: uppercase;
-  font-size: 10px;
   background-color: #ff6200;
   border-radius: 5px;
   width: 40%;
-  margin: 70px auto;
+  margin: 110px auto;
   color: #fff;
-  padding: 10px;
+  padding: 15px;
 }
 
 .scorepoints {
   color: #ff6200;
-  font-size: 35px;
-  margin: 0;
-}
-
-h2 {
-  margin: 40px 0 10px 0;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 50px;
+  margin-top: 40px;
 }
 
 .scoreboard {
+  font-size: 30px;
+  margin: 15px 0 0 0;
+}
+
+.current-scorepoints__text {
   font-size: 15px;
-  margin: 10px 0 0 0;
-}
-
-p {
-  margin: 0;
-}
-
-.para {
-  font-size: 8px;
 }
 
 .game {
   position: relative;
 }
 
+/* Buttons for the game */
+
 .btn {
   border: 0;
   padding: 5px 14px;
-  font-size: 8px;
-  border-radius: 10px;
+  font-size: 0.8rem;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 15px;
   font-weight: 600;
   background-color: rgba(255, 255, 255, 0.75);
 }
 
 .btn-newgame::before {
   content: "🐷";
-  margin-right: 4px;
+  margin-right: 7px;
 }
 
 .btn-newgame {
@@ -113,7 +129,7 @@ p {
 
 .btn-dish::before {
   content: "🎲";
-  margin-right: 4px;
+  margin-right: 7px;
 }
 
 .btn-stay {
@@ -125,57 +141,34 @@ p {
 
 .btn-stay::before {
   content: "👌";
-  margin-right: 4px;
+  margin-right: 7px;
 }
+
+/* Show the dice */
 
 .dice-position-active {
   position: absolute;
-  height: 50px;
-  top: 44%;
+  height: 70px;
+  top: 40%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
-.hidden {
-  display: none;
-}
+/* Modal window */
 
-.show-modal-window {
-  font-size: 2rem;
-  font-weight: 600;
-  padding: 1.75rem 3.5rem;
-  margin: 5rem 2rem;
-  border: none;
-  background-color: rgb(18, 208, 221);
-  color: rgb(13, 10, 232);
-  border-radius: 10rem;
-  cursor: pointer;
-}
-
-.close-modal-window {
-  position: absolute;
-  top: 4rem;
-  right: 2rem;
-  font-size: 3rem;
-  color: #444;
-  cursor: pointer;
-  border: none;
-  background: none;
-}
-
-/* Classes for modal windows functionality */
 .modal-window {
+  animation: showModal 0.5s linear forwards;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 30%;
+  width: 25%;
   text-align: center;
   background-color: #fff;
   padding: 6rem;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
@@ -191,20 +184,58 @@ p {
   z-index: 5;
 }
 
+.hidden,
 .hidden-window {
   display: none;
 }
 
+/* Modal components */
+
 .piggy {
-  font-size: 5rem;
+  font-size: 1.5rem;
   margin: 0;
+}
+
+.gameover {
+  margin-top: 50px;
+  font-size: 1.4rem;
 }
 
 .btn-orange {
   background-color: #ff6200;
   font-size: 1.2rem;
   color: #fff;
-  border-radius: 6px;
+  border-radius: 10px;
   margin-top: 45px;
-  padding: 5px 10px;
+  width: 15rem;
+  height: 3rem;
+}
+
+/* Animations */
+
+@keyframes showModal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showBlock {
+  0% {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+@keyframes reverseShowBlock {
+  0% {
+    background-color: rgba(255, 255, 255, 0.65);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
 }
