@@ -22,6 +22,19 @@ let numOfSOP = 0;
 
 // удаляем классы, чтобы они не картинки не накладывались друг на друга и все корректно отображалось
 
+function setAnimationTime(time) {
+  document.querySelector(
+    ".inactive"
+  ).style.cssText = `animation: reverseShowBlock ${time} linear forwards;`;
+  document.querySelector(
+    ".actual"
+  ).style.cssText = `animation: showBlock  ${time} linear forwards;`;
+}
+
+setAnimationTime("0s");
+
+function setAnimations() {}
+
 function setClassesToRemoveDice() {
   for (let i = 0; i < dice.length; i++) {
     if (
@@ -58,6 +71,7 @@ function swapPlayers() {
     players[i].classList.toggle("actual");
     players[i].classList.toggle("inactive");
   }
+  setAnimationTime("0.75s");
 }
 
 // устанавливаем 0 очков в табле с очками

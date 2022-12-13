@@ -49,16 +49,6 @@ h2 {
 
 /* Styles for active player */
 
-.actual {
-  animation: showBlock 0.75s linear forwards;
-  background-color: rgba(255, 255, 255, 0.65);
-}
-
-.inactive {
-  animation: reverseShowBlock 0.75s linear forwards;
-  background-color: rgba(255, 255, 255, 0.65);
-}
-
 .game__player-item:nth-child(2) {
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
